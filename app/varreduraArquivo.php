@@ -11,7 +11,8 @@ do{
         '</textarea>'
     );
     
-    criarArquivo($xml);
+    criarArquivo($xml, @getId(simplexml_load_string($xml)));
+    //criarArquivo($xml);
 
     $conteudo = after($xml, $conteudo);
     
@@ -22,7 +23,8 @@ do{
 
     if($scan != false){
         
-        criarArquivo($scan);
+        criarArquivo($scan, @getId(simplexml_load_string($scan)));
+        //criarArquivo($scan);
     }else{
         $flag = false;
     }
@@ -38,7 +40,8 @@ do{
         '</textarea>'
     );
     
-    criarArquivo($xml);
+    criarArquivo($xml, @getId(simplexml_load_string($xml)));
+    //criarArquivo($xml);
 
     $conteudo = after($xml, $conteudo);
     
@@ -49,7 +52,8 @@ do{
 
     if($scan != false){
         
-        criarArquivo($scan);
+        criarArquivo($scan, @getId(simplexml_load_string($scan)));
+        //criarArquivo($scan);
     }else{
         $flag = false;
     }

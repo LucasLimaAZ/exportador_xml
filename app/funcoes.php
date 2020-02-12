@@ -6,9 +6,8 @@ function after ($inthis, $inthat)
     return substr($inthat, strpos($inthat,$inthis)+strlen($inthis));
 };
 
-function criarArquivo($xml)
+function criarArquivo($xml, $nomeArquivo)
 {
-    $nomeArquivo = rand(0, 9999999);
     $novoArquivo = fopen("../output/$nomeArquivo.xml", "w");
     fwrite($novoArquivo, $xml);
     fclose($novoArquivo);
@@ -25,11 +24,11 @@ function extrairXmlEntre($conteudo, $palavraInicial, $palavraFinal)
     }
 } 
 
-// function getId($object)
-// {
-//     foreach($object as $prop){
-//         if($prop["Id"]){
-//             return $prop["Id"];
-//         }
-//     }
-// }
+function getId($object)
+{
+    foreach($object as $key => $value){
+        if(isset($value["Id"])){
+            return $value["Id"];
+        }
+    }
+}
