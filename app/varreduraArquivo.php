@@ -5,6 +5,7 @@ require_once 'funcoes.php';
 $conteudo = file_get_contents($_FILES['arquivo']['tmp_name']);
 $flag = true;
 
+/*
 do{
     $xml = extrairXmlEntre($conteudo, 
         'XML do Evento Assinado para Envio<i/><br/><textarea class="areaDeTextoDaLinhaOk">',
@@ -26,13 +27,14 @@ do{
         $flag = false;
     
 }while($flag);
+*/
 
 $flag = true;
 $conteudo = file_get_contents($_FILES['arquivo']['tmp_name']);
 
 do{
     $xml = extrairXmlEntre($conteudo, 
-        'XML da Consulta do Processamento do Lote',
+        'XML de Retorno do Processamento do Lote',
         '</textarea>'
     );
 
@@ -41,7 +43,7 @@ do{
     $conteudo = after($xml, $conteudo);
     
     $scan = extrairXmlEntre($conteudo, 
-        'XML da Consulta do Processamento do Lote',
+        'XML de Retorno do Processamento do Lote',
         '</textarea>'
     );
 
