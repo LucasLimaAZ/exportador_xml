@@ -32,3 +32,13 @@ function getId($object)
         }
     }
 }
+
+function getNumeroLote($lote)
+{
+    $nomeArquivo = extrairXmlEntre($lote, 
+        "'",
+        "'"
+    );
+
+    return $nomeArquivo;
+}

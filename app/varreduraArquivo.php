@@ -12,7 +12,6 @@ do{
     );
     
     criarArquivo($xml, @getId(simplexml_load_string($xml)));
-    //criarArquivo($xml);
 
     $conteudo = after($xml, $conteudo);
     
@@ -21,13 +20,10 @@ do{
         '</textarea>'
     );
 
-    if($scan != false){
-        
+    if($scan != false)
         criarArquivo($scan, @getId(simplexml_load_string($scan)));
-        //criarArquivo($scan);
-    }else{
+    else
         $flag = false;
-    }
     
 }while($flag);
 
@@ -36,27 +32,23 @@ $conteudo = file_get_contents($_FILES['arquivo']['tmp_name']);
 
 do{
     $xml = extrairXmlEntre($conteudo, 
-        'XML de Retorno do processamento do lote',
+        'XML da Consulta do Processamento do Lote',
         '</textarea>'
     );
-    
-    criarArquivo($xml, @getId(simplexml_load_string($xml)));
-    //criarArquivo($xml);
+
+    criarArquivo($xml, @getNumeroLote(($xml)));
 
     $conteudo = after($xml, $conteudo);
     
     $scan = extrairXmlEntre($conteudo, 
-        'XML de Retorno do processamento do lote',
+        'XML da Consulta do Processamento do Lote',
         '</textarea>'
     );
 
-    if($scan != false){
-        
-        criarArquivo($scan, @getId(simplexml_load_string($scan)));
-        //criarArquivo($scan);
-    }else{
+    if($scan != false)
+        criarArquivo($scan, @getNumeroLote(($scan)));
+    else
         $flag = false;
-    }
     
 }while($flag);
 
