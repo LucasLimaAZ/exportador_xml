@@ -24,8 +24,20 @@ function extrairXmlEntre($conteudo, $palavraInicial, $palavraFinal)
     }
 } 
 
+function extrairXmlDe($conteudo, $palavraInicial, $palavraFinal) 
+{ 
+    if(@strpos($conteudo, $palavraInicial)){
+        $recorte = @strpos($conteudo, $palavraInicial);
+        //$recorte += strlen($palavraFinal);
+        $tamanho = (@strpos($conteudo, $palavraFinal, $recorte) + strlen($palavraFinal)) - $recorte; 
+    
+        return substr($conteudo, $recorte, $tamanho);   
+    }
+} 
+
 function getId($object)
 {
+    return rand(0, 9999999999999);
     foreach($object as $key => $value){
         if(isset($value["Id"])){
             return $value["Id"];

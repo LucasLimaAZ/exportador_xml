@@ -5,14 +5,16 @@ require_once 'funcoes.php';
 $conteudo = file_get_contents($_FILES['arquivo']['tmp_name']);
 $flag = true;
 
-/*
 do{
     $xml = extrairXmlEntre($conteudo, 
         'XML do Evento Assinado para Envio<i/><br/><textarea class="areaDeTextoDaLinhaOk">',
         '</textarea>'
     );
     
-    criarArquivo($xml, @getId(simplexml_load_string($xml)));
+    if($xml)
+        criarArquivo($xml, @getId(simplexml_load_string($xml)));
+    else
+        $flag = false;
 
     $conteudo = after($xml, $conteudo);
     
@@ -21,13 +23,12 @@ do{
         '</textarea>'
     );
 
-    if($scan != false)
+    if($scan)
         criarArquivo($scan, @getId(simplexml_load_string($scan)));
     else
         $flag = false;
     
 }while($flag);
-*/
 
 $flag = true;
 $conteudo = file_get_contents($_FILES['arquivo']['tmp_name']);
@@ -38,7 +39,10 @@ do{
         '</textarea>'
     );
 
-    criarArquivo($xml, @getNumeroLote(($xml)));
+    if($xml)
+        criarArquivo($xml, @getNumeroLote(($xml)));
+    else
+        $flag = false;
 
     $conteudo = after($xml, $conteudo);
     
@@ -47,7 +51,7 @@ do{
         '</textarea>'
     );
 
-    if($scan != false)
+    if($scan)
         criarArquivo($scan, @getNumeroLote(($scan)));
     else
         $flag = false;
