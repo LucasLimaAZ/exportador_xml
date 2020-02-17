@@ -3,6 +3,7 @@
 require_once 'funcoes.php';
 
 $conteudo = file_get_contents($_FILES['arquivo']['tmp_name']);
+$conteudo = after("<eSocial", $conteudo);
 $flag = true;
 
 do{
@@ -17,7 +18,6 @@ do{
     else
         $flag = false;
 
-    $i++;
     $conteudo = after($xml, $conteudo);
     
     $scan = extrairXmlDe($conteudo, 
