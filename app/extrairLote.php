@@ -13,10 +13,14 @@ do{
         '</eSocial>'
     );
 
-    if($xml)
-        criarArquivo($xml, @getId(simplexml_load_string($xml)));
-    else
+    if($xml){
+        if(strpos($xml, "<retornoEvento"))
+            criarArquivo($xml, "retorno_".@getId(simplexml_load_string($xml)));
+        else
+            criarArquivo($xml, @getId(simplexml_load_string($xml)));
+    }else{
         $flag = false;
+    }
 
     $conteudo = after($xml, $conteudo);
     
@@ -27,10 +31,16 @@ do{
 
     $conteudo = after($scan, $conteudo);
 
-    if($scan)
-        criarArquivo($scan, @getId(simplexml_load_string($scan)));
-    else
+    if($scan){
+        if(strpos($xml, "<retornoEvento"))
+            criarArquivo($xml, "retorno_".@getId(simplexml_load_string($xml)));
+        else{
+            criarArquivo($scan, @getId(simplexml_load_string($scan)));
+        }
+    }else{
         $flag = false;
+    }
+        
     
 }while($flag);
 
