@@ -1,5 +1,7 @@
 $("#importar").click(() => {
 
+    $("#loader").show()
+
     if($("#arquivo_lote").val() == ''){
         alert('Nenhum arquivo selecionado!')
         return
@@ -20,6 +22,9 @@ $("#importar").click(() => {
     })
     .fail(() => {
         exibirFalha()
+    })
+    .always(() => {
+        $("#loader").hide()
     })
 
 })

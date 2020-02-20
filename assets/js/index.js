@@ -1,5 +1,7 @@
 $("#importar").click(() => {
 
+    $("#loader").show()
+
     if($("#arquivo_importado").val() == ''){
         alert('Nenhum arquivo selecionado!')
         return
@@ -21,14 +23,22 @@ $("#importar").click(() => {
     .fail(() => {
         exibirFalha()
     })
+    .always(() => {
+        $("#loader").hide()
+    })
 
 })
 
 function lerArquivo()
 {
     let fd = new FormData()
-    let files = $('#arquivo_importado')[0].files[0]
-    fd.append('arquivo',files)
+    let files = $('#arquivo_importado')[0].files
+    let quantidade = files.length
+    
+    for(i = 0; i < quantidade; i ++){
+        fd.append(`arquivo-${i}`,files[i])
+    }
+
     return fd
 }
 

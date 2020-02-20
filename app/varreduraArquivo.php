@@ -2,60 +2,64 @@
 
 require_once 'funcoes.php';
 
-$conteudo = file_get_contents($_FILES['arquivo']['tmp_name']);
-$flag = true;
+foreach($_FILES as $file){
 
-do{
-    $xml = extrairXmlEntre($conteudo, 
-        'XML do Evento Assinado para Envio<i/><br/><textarea class="areaDeTextoDaLinhaOk">',
-        '</textarea>'
-    );
+    $conteudo = file_get_contents($file['tmp_name']);
+    $flag = true;
     
-    if($xml)
-        criarArquivo($xml, @getId(simplexml_load_string($xml)));
-    else
-        $flag = false;
-
-    $conteudo = after($xml, $conteudo);
+    do{
+        $xml = extrairXmlEntre($conteudo, 
+            'XML do Evento Assinado para Envio<i/><br/><textarea class="areaDeTextoDaLinhaOk">',
+            '</textarea>'
+        );
+        
+        if($xml)
+            criarArquivo($xml, @getId(simplexml_load_string($xml)));
+        else
+            $flag = false;
     
-    $scan = extrairXmlEntre($conteudo, 
-        'XML do Evento Assinado para Envio<i/><br/><textarea class="areaDeTextoDaLinhaOk">',
-        '</textarea>'
-    );
-
-    if($scan)
-        criarArquivo($scan, @getId(simplexml_load_string($scan)));
-    else
-        $flag = false;
+        $conteudo = after($xml, $conteudo);
+        
+        $scan = extrairXmlEntre($conteudo, 
+            'XML do Evento Assinado para Envio<i/><br/><textarea class="areaDeTextoDaLinhaOk">',
+            '</textarea>'
+        );
     
-}while($flag);
-
-$flag = true;
-$conteudo = file_get_contents($_FILES['arquivo']['tmp_name']);
-
-do{
-    $xml = extrairXmlEntre($conteudo, 
-        'XML de Retorno do Processamento do Lote',
-        '</textarea>'
-    );
-
-    if($xml)
-        criarArquivo($xml, @getNumeroLote(($xml)));
-    else
-        $flag = false;
-
-    $conteudo = after($xml, $conteudo);
+        if($scan)
+            criarArquivo($scan, @getId(simplexml_load_string($scan)));
+        else
+            $flag = false;
+        
+    }while($flag);
     
-    $scan = extrairXmlEntre($conteudo, 
-        'XML de Retorno do Processamento do Lote',
-        '</textarea>'
-    );
-
-    if($scan)
-        criarArquivo($scan, @getNumeroLote(($scan)));
-    else
-        $flag = false;
+    $flag = true;
+    $conteudo = file_get_contents($file['tmp_name']);
     
-}while($flag);
+    do{
+        $xml = extrairXmlEntre($conteudo, 
+            'XML de Retorno do Processamento do Lote',
+            '</textarea>'
+        );
+    
+        if($xml)
+            criarArquivo($xml, @getNumeroLote(($xml)));
+        else
+            $flag = false;
+    
+        $conteudo = after($xml, $conteudo);
+        
+        $scan = extrairXmlEntre($conteudo, 
+            'XML de Retorno do Processamento do Lote',
+            '</textarea>'
+        );
+    
+        if($scan)
+            criarArquivo($scan, @getNumeroLote(($scan)));
+        else
+            $flag = false;
+        
+    }while($flag);
+    
+}
 
 echo json_encode("success");
