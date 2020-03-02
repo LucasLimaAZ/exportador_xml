@@ -18,6 +18,8 @@ foreach($_FILES as $file):
         if($xml){
             if(strpos($xml, "<retornoEvento"))
                 criarArquivo($xml, "retorno_".@getId(simplexml_load_string($xml)));
+            else
+                criarArquivo($xml, @getId(simplexml_load_string($xml)));
         }else{
             $flag = false;
         }
@@ -34,6 +36,8 @@ foreach($_FILES as $file):
         if($scan){
             if(strpos($scan, "<retornoEvento"))
                 criarArquivo($scan, "retorno_".@getId(simplexml_load_string($scan)));
+            else
+                criarArquivo($scan, @getId(simplexml_load_string($scan)));
         }else{
             $flag = false;
         }
