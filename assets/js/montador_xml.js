@@ -1,6 +1,6 @@
 $("#botao-converter").click(() => {
 
-    let dados = $("#converter").serialize()
+    let dados = $("#converter").serializeArray()
 
     $("#loader").show()
 
@@ -10,7 +10,9 @@ $("#botao-converter").click(() => {
     }
 
     fd = lerArquivo()
-    fd.append("dados", dados)
+
+    fd.append("modelo", dados[0].value)
+    fd.append("envio_retorno", dados[1].value)
 
     $.ajax({
         url: 'app/montador_xml.php',

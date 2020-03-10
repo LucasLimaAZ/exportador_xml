@@ -1,7 +1,6 @@
 <?php
 
 require_once("funcoes.php");
-die(var_dump($_POST));
 
 switch($_POST["modelo"]){
 
