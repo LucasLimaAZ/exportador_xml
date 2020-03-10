@@ -117,7 +117,7 @@ function montarXml1200Envio($coluna)
         </ideEvento>
         <ideEmpregador>
         <tpInsc>1</tpInsc>
-        <nrInsc>'.$coluna[1].'</nrInsc>
+        <nrInsc>'.trim($coluna[1]).'</nrInsc>
         </ideEmpregador>
         <ideTrabalhador>
         <cpfTrab>'.$coluna[3].'</cpfTrab>
@@ -129,7 +129,7 @@ function montarXml1200Envio($coluna)
         <infoPerApur>
         <ideEstabLot>
         <tpInsc>1</tpInsc>
-        <nrInsc>'.$coluna[7].'</nrInsc>
+        <nrInsc>'.trim($coluna[7]).'</nrInsc>
         <codLotacao>SIRH.0748.1600</codLotacao>
         <remunPerApur>
         <matricula>'.$coluna[6].'</matricula>
@@ -158,7 +158,7 @@ function montarXml1200Envio($coluna)
         <infoPerApur>
         <ideEstabLot>
         <tpInsc>1</tpInsc>
-        <nrInsc>'.$coluna[7].'</nrInsc>
+        <nrInsc>'.trim($coluna[7]).'</nrInsc>
         <codLotacao>SIRH.0748.1600</codLotacao>
         <remunPerApur>
         <matricula>'.$coluna[6].'</matricula>
@@ -269,7 +269,7 @@ function montarXml1200Retorno($coluna)
         <retornoEvento Id="'.$coluna[0].'">
         <ideEmpregador>
         <tpInsc>1</tpInsc>
-        <nrInsc>'.$coluna[1].'</nrInsc>
+        <nrInsc>'.trim($coluna[1]).'</nrInsc>
         </ideEmpregador>
         <recepcao>
         <tpAmb>1</tpAmb>
@@ -335,7 +335,7 @@ function montarXml1210Envio($coluna)
         </ideEvento>
         <ideEmpregador>
         <tpInsc>1</tpInsc>
-        <nrInsc>'.$coluna[1].'</nrInsc>
+        <nrInsc>'.trim($coluna[1]).'</nrInsc>
         </ideEmpregador>
         <ideBenef>
         <cpfBenef>'.$coluna[4].'</cpfBenef>
@@ -406,7 +406,7 @@ function montarXml1210Retorno($coluna)
         <retornoEvento Id="'.$coluna[0].'">
         <ideEmpregador>
         <tpInsc>1</tpInsc>
-        <nrInsc>'.$coluna[1].'</nrInsc>
+        <nrInsc>'.trim($coluna[1]).'</nrInsc>
         </ideEmpregador>
         <recepcao>
         <tpAmb>1</tpAmb>
@@ -459,9 +459,9 @@ function montarXml1210Retorno($coluna)
 
 function montarXml2200Envio($coluna)
 {
-    $coluna[8] = date_format(date_create($coluna[8]), "Y-m-d");
-    $coluna[17] = date_format(date_create($coluna[17]), "Y-m-d");
-    $coluna[19] = date_format(date_create($coluna[19]), "Y-m-d");
+    $coluna[8] = @date_format(date_create($coluna[8]), "Y-m-d");
+    $coluna[17] = @date_format(date_create($coluna[17]), "Y-m-d");
+    $coluna[19] = @date_format(date_create($coluna[19]), "Y-m-d");
 
     $xml = '
         <eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtAdmissao/v02_04_01">
@@ -474,7 +474,7 @@ function montarXml2200Envio($coluna)
         </ideEvento>
         <ideEmpregador>
         <tpInsc>1</tpInsc>
-        <nrInsc>'.$coluna[1].'</nrInsc>
+        <nrInsc>'.trim($coluna[1]).'</nrInsc>
         </ideEmpregador>
         <trabalhador>
         <cpfTrab>'.$coluna[3].'</cpfTrab>
@@ -573,7 +573,7 @@ function montarXml2200Envio($coluna)
         <localTrabalho>
         <localTrabGeral>
         <tpInsc>1</tpInsc>
-        <nrInsc>'.$coluna[24].'</nrInsc>
+        <nrInsc>'.trim($coluna[24]).'</nrInsc>
         </localTrabGeral>
         </localTrabalho>
         <horContratual>
@@ -645,16 +645,16 @@ function montarXml2200Envio($coluna)
 
 function montarXml2200Retorno($coluna)
 {
-    $coluna[8] = date_format(date_create($coluna[8]), "Y-m-d");
-    $coluna[17] = date_format(date_create($coluna[17]), "Y-m-d");
-    $coluna[19] = date_format(date_create($coluna[19]), "Y-m-d");
+    $coluna[8] = @date_format(date_create($coluna[8]), "Y-m-d");
+    $coluna[17] = @date_format(date_create($coluna[17]), "Y-m-d");
+    $coluna[19] = @date_format(date_create($coluna[19]), "Y-m-d");
 
     $xml = '
         <eSocial xmlns="http://www.esocial.gov.br/schema/evt/retornoEvento/v1_2_0">
         <retornoEvento Id="'.$coluna[0].'">
         <ideEmpregador>
         <tpInsc>1</tpInsc>
-        <nrInsc>'.$coluna[1].'</nrInsc>
+        <nrInsc>'.trim($coluna[1]).'</nrInsc>
         </ideEmpregador>
         <recepcao>
         <tpAmb>1</tpAmb>
@@ -674,7 +674,7 @@ function montarXml2200Retorno($coluna)
         <contrato>
         <ideEmpregador>
         <tpInsc>1</tpInsc>
-        <nrInsc>'.$coluna[1].'</nrInsc>
+        <nrInsc>'.trim($coluna[1]).'</nrInsc>
         </ideEmpregador>
         <trabalhador>
         <cpfTrab>'.$coluna[3].'</cpfTrab>
@@ -714,7 +714,7 @@ function montarXml2200Retorno($coluna)
         </duracao>
         <localTrabGeral>
         <tpInsc>1</tpInsc>
-        <nrInsc>'.$coluna[24].'</nrInsc>
+        <nrInsc>'.trim($coluna[24]).'</nrInsc>
         <cnae>1531901</cnae>
         </localTrabGeral>
         <horContratual>
