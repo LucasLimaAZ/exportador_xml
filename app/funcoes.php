@@ -275,7 +275,7 @@ function montarXml1200Retorno($coluna)
         <tpAmb>1</tpAmb>
         <dhRecepcao>2020-02-06T15:32:55.36</dhRecepcao>
         <versaoAppRecepcao>0.1.0-A0384</versaoAppRecepcao>
-        <protocoloEnvioLote>1.1.202002.0000000000888473633</protocoloEnvioLote>(verificar se tem que colocar numero aleatorio e ano 2019)
+        <protocoloEnvioLote>1.1.202002.0000000000888473633</protocoloEnvioLote>
         </recepcao>
         <processamento>
         <cdResposta>201</cdResposta>
