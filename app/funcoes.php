@@ -459,9 +459,6 @@ function montarXml1210Retorno($coluna)
 
 function montarXml2200Envio($coluna)
 {
-    $coluna[8] = @date_format(date_create($coluna[8]), "Y-m-d");
-    $coluna[17] = @date_format(date_create($coluna[17]), "Y-m-d");
-    $coluna[19] = @date_format(date_create($coluna[19]), "Y-m-d");
 
     $xml = '
         <eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtAdmissao/v02_04_01">
@@ -645,9 +642,6 @@ function montarXml2200Envio($coluna)
 
 function montarXml2200Retorno($coluna)
 {
-    $coluna[8] = @date_format(date_create($coluna[8]), "Y-m-d");
-    $coluna[17] = @date_format(date_create($coluna[17]), "Y-m-d");
-    $coluna[19] = @date_format(date_create($coluna[19]), "Y-m-d");
 
     $xml = '
         <eSocial xmlns="http://www.esocial.gov.br/schema/evt/retornoEvento/v1_2_0">
