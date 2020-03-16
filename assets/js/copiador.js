@@ -1,6 +1,4 @@
-$("#botao-converter").click(() => {
-
-    let dados = $("#converter").serializeArray()
+$("#importar").click(() => {
 
     $("#loader").show()
 
@@ -9,15 +7,12 @@ $("#botao-converter").click(() => {
         return
     }
 
-    fd = lerArquivo()
-
-    fd.append("modelo", dados[0].value)
-    fd.append("envio_retorno", dados[1].value)
+    let arquivo = lerArquivo()
 
     $.ajax({
-        url: 'app/montador_xml.php',
+        url: 'app/copiadorPorTag.php',
         type: 'post',
-        data: fd,
+        data: arquivo,
         dataType: 'json',
         contentType: false,
         processData: false,
