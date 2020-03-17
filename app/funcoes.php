@@ -258,7 +258,7 @@ function montarXml1200Envio($coluna)
         </eSocial>
     ';
 
-    $montar_xml = fopen("../output/s1200_envio_".rand(0, 99999999999999).".xml", "w");
+    $montar_xml = fopen("../output/".$coluna[0].".xml", "w");
     fwrite($montar_xml, $xml);
 }
 
@@ -315,7 +315,7 @@ function montarXml1200Retorno($coluna)
         </eSocial>
     ';
 
-    $montar_xml = fopen("../output/s1200_retorno_".rand(0, 99999999999999).".xml", "w");
+    $montar_xml = fopen("../output/".$coluna[0]."_retorno.xml", "w");
     fwrite($montar_xml, $xml);
 }
 
@@ -394,7 +394,7 @@ function montarXml1210Envio($coluna)
 
     ';
 
-    $montar_xml = fopen("../output/s1210_envio_".rand(0, 99999999999999).".xml", "w");
+    $montar_xml = fopen("../output/".$coluna[0].".xml", "w");
     fwrite($montar_xml, $xml);
 }
 
@@ -453,7 +453,7 @@ function montarXml1210Retorno($coluna)
 
     ';
 
-    $montar_xml = fopen("../output/s1210_retorno_".rand(0, 99999999999999).".xml", "w");
+    $montar_xml = fopen("../output/".$coluna[0]."_retorno.xml", "w");
     fwrite($montar_xml, $xml);
 }
 
@@ -636,7 +636,7 @@ function montarXml2200Envio($coluna)
         </eSocial>
     ';
 
-    $montar_xml = fopen("../output/s2200_envio_".rand(0, 99999999999999).".xml", "w");
+    $montar_xml = fopen("../output/".$coluna[0].".xml", "w");
     fwrite($montar_xml, $xml);
 }
 
@@ -816,6 +816,6 @@ function montarXml2200Retorno($coluna)
         </eSocial>
     ';
 
-    $montar_xml = fopen("../output/s2200_retorno_".rand(0, 99999999999999).".xml", "w");
+    $montar_xml = fopen("../output/".$coluna[0]."_retorno.xml", "w");
     fwrite($montar_xml, $xml);
 }
