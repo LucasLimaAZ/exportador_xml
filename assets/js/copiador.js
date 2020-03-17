@@ -2,17 +2,17 @@ $("#importar").click(() => {
 
     $("#loader").show()
 
-    if($("#arquivo_importado").val() == ''){
-        alert('Nenhum arquivo selecionado!')
-        return
-    }
+    // if($("#arquivo_importado").val() == ''){
+    //     alert('Nenhum arquivo selecionado!')
+    //     return
+    // }
 
-    let arquivo = lerArquivo()
+    // let arquivo = lerArquivo()
 
     $.ajax({
         url: 'app/copiadorPorTag.php',
         type: 'post',
-        data: arquivo,
+        data: {},
         dataType: 'json',
         contentType: false,
         processData: false,
